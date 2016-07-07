@@ -12,7 +12,7 @@ class Stack
 	end
 
 	def pop
-		return if !empty?
+		return if empty?
 		
 		length = @memory_array.length
 		@memory_array[length-1] = nil
