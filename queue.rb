@@ -16,12 +16,14 @@ attr_accessor :top, :memory_array
 			@memory_array[@counter] = thing_to_be_queued
 			@counter +=1
 		end
+		@memory_array.compact!
 	end
 
 	def dequeue
 		return if !empty?
 		@memory_array.each_with_index do |shift,num|
 			@memory_array[num] = @memory_array[num+1]
+			@memory_array.compact!
 		end
 	end
 
@@ -44,4 +46,5 @@ q.enqueue("3")
 q.enqueue("4")
 q.dequeue
 q.dequeue
+q.enqueue("5")
 print q.memory_array
