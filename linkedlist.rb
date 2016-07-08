@@ -1,4 +1,4 @@
-Node = Struct.new(:data, :next)
+Node = Struct.new(:data, :next, :defin)
 
 
 class LinkedList
@@ -12,21 +12,21 @@ class LinkedList
   end
 
 
-  def add_first_node(data)
-    @head = Node.new(data, nil)
+  def add_first_node(data,defin)
+    @head = Node.new(data, defin, nil )
     @last = @head
   end
 
 
-  def add_node(data)
+  def add_node(data,defin)
 
     if @head.nil?
 
-      add_first_node(data)
+      add_first_node(data,defin)
 
     else
 
-      new_node = Node.new(data)
+      new_node = Node.new(data,defin)
 
       @last.next = new_node
 
@@ -34,28 +34,28 @@ class LinkedList
 
     end
 
-    puts "Added node with value: #{data}"
+    puts "Added node with value: #{data} and #{defin}"
   end
 
 
-  def remove_node(index)
+  # def remove_node(index)
 
-    counter = 0
-    current_node = @head
-    prev_node = nil
+  #   counter = 0
+  #   current_node = @head
+  #   prev_node = nil
 
-    while counter < index
-      prev_node = current_node
-      current_node = current_node.next
-      counter += 1
-    end
+  #   while counter < index
+  #     prev_node = current_node
+  #     current_node = current_node.next
+  #     counter += 1
+  #   end
 
-    next_node = current_node.next
-    current_node.next = nil      
-    prev_node.next = next_node
+  #   next_node = current_node.next
+  #   current_node.next = nil      
+  #   prev_node.next = next_node
 
-    puts "Removed node at index #{index} with value: #{current_node.data}"
-  end
+  #   puts "Removed node at index #{index} with value: #{current_node.defin}"
+  # end
 
 
   def find_node(index)
@@ -76,8 +76,8 @@ class LinkedList
   def print_list
     counter = 0
     current_node = @head
-    loop do
-      puts "Node at index #{counter}: #{current_node.data}"
+    until counter = 100 do
+      puts "Node at index #{counter}"
       break if current_node.next.nil?
       current_node = current_node.next
       counter += 1
